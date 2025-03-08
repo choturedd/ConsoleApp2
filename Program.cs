@@ -279,17 +279,34 @@ finally
 
 int[] a = new int[5];
 string s;
+int aa = int.MaxValue;
 try
 {
-    //a[10000] = 10;
-    s=Console.ReadLine();
-    s += 10;
+    checked
+    {
+        aa+= 10;
+        //a[10000] = 10;
+        s = Console.ReadLine();
+        s += 10;
+    }
 }
 catch (IndexOutOfRangeException ex)
 {
     Console.WriteLine(ex.Message);
 }
-catch (Exception ex)
+catch (System.ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+catch (System.FormatException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+catch (System.OverflowException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+catch (System.Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
